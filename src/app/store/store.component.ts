@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductRepository} from '../model/product.repository';
-import {Product} from "../model/product.model";
+import {Product} from '../model/product.model';
+import {Cart} from '../model/cart.model';
 
 @Component({
   selector: 'app-store',
@@ -11,13 +12,13 @@ export class StoreComponent implements OnInit {
   public selectedCategory = null;
   public productsPerPage = 4;
   public selectedPage = 1;
-  constructor(private repository: ProductRepository) { }
+  constructor(private repository: ProductRepository, private cart: Cart) { }
 
   ngOnInit() {
   }
   get products(): Product[] {
     /*return this.repository.getProducts(this.selectedCategory);*/
-    let pageIndex = (this.selectedPage - 1) * this.productsPerPage;
+    const pageIndex = (this.selectedPage - 1) * this.productsPerPage;
     return this.repository.getProducts(this.selectedCategory)
         .slice(pageIndex, pageIndex + this.productsPerPage);
   }
@@ -36,14 +37,16 @@ export class StoreComponent implements OnInit {
   }
 
   changePageSize(newSize: number) {
-    console.log("new list size "+ newSize )
     this.productsPerPage = Number(newSize);
     this.changePage(1);
   }
 
   get pageCount(): number {
     return Math.ceil(this.repository
-            .getProducts(this.selectedCategory).length / this.productsPerPage)
+            .getProducts(this.selectedCategory).length / this.productsPerPage);
+  }
+  addProductToCart(product: Product) {
+    this.cart.addLine(product);
   }
   /*get pageNumbers(): number[] {
     return Array(Math.ceil(this.repository
