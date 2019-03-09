@@ -28,7 +28,7 @@
                                style="width:5em"
                                [value]="line.quantity"
                                (change)="cart.updateQuantity(line.product,
-$event.target.value)" />
+$event.target.value)" [min]="1" />
                     </td>
                     <td>{{line.product.name}}</td>
                     <td class="text-right">
