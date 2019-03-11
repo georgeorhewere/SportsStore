@@ -4,6 +4,7 @@
             <a class="navbar-brand">SPORTS STORE</a>
             <cart-summary></cart-summary>
         </div>
+
     </div>
     <div class="row ">
         <div class="col-3 p-2">
@@ -14,6 +15,9 @@
                     class="btn btn-outline-primary btn-block"
                     [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">
                 {{cat}}
+            </button>
+            <button class="btn btn-block btn-danger m-t-3" routerLink="/admin">
+                Admin
             </button>
         </div>
         <div class="col-9 p-2">
