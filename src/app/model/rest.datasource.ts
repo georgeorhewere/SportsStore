@@ -56,7 +56,9 @@ export class RestDataSource {
         return this.http.delete<Product>(`${this.baseUrl}products/${id}`,
             this.getOptions());
     }
+    /*TODO:Fix validation issue for order requests */
     getOrders(): Observable<Order[]> {
+
         return this.http.get<Order[]>(this.baseUrl + 'orders', this.getOptions());
     }
     deleteOrder(id: number): Observable<Order> {

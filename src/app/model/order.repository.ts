@@ -21,8 +21,10 @@ export class OrderRepository {
         if (!this.loaded) {
             this.loadOrders();
         }
+
         return this.orders;
     }
+
     updateOrder(order: Order) {
         this.dataSource.updateOrder(order).subscribe( order => {
             this.orders.splice(this.orders.
