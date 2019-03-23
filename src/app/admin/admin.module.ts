@@ -5,6 +5,9 @@ import { RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { ProductGridComponent } from './product-grid/product-grid.component';
+import { ProductEditorComponent } from './product-editor/product-editor.component';
+import { OrderGridComponent } from './order-grid/order-grid.component';
 
 let routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
@@ -17,7 +20,7 @@ let routing = RouterModule.forChild([
    FormsModule,
     routing
   ],
-  declarations: [AuthComponent, AdminComponent],
+  declarations: [AuthComponent, AdminComponent, ProductGridComponent, ProductEditorComponent, OrderGridComponent],
     providers: [AuthGuard]
 })
 export class AdminModule {
