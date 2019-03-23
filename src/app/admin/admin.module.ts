@@ -11,7 +11,15 @@ import { OrderGridComponent } from './order-grid/order-grid.component';
 
 let routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
-  { path: 'main', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'main', component: AdminComponent, canActivate: [AuthGuard],
+      children: [
+          { path: 'products/:mode/:id', component: ProductEditorComponent },
+          { path: 'products/:mode', component: ProductEditorComponent },
+          { path: 'products', component: ProductGridComponent },
+          { path: 'orders', component: OrderGridComponent },
+          { path: '**', redirectTo: 'products' }
+      ]
+  },
   { path: '**', redirectTo: 'auth' }
 ]);
 @NgModule({
