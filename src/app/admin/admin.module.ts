@@ -18,7 +18,7 @@ let routing = RouterModule.forChild([
     routing
   ],
   declarations: [AuthComponent, AdminComponent],
-    providers:[AuthGuard]
+    providers: [AuthGuard]
 })
 export class AdminModule {
 
