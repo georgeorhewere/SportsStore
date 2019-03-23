@@ -22,7 +22,7 @@ export class ProductRepository {
     }
 
     getProduct(id: number): Product {
-        return this.products.find(p => p.id === id);
+        return this.products.find(p => p.id == id);
     }
 
     getCategories(): string[] {
@@ -44,7 +44,7 @@ export class ProductRepository {
 
     deleteProduct(id: number) {
         this.dataSource.deleteProduct(id).subscribe(x => {
-            this.products.splice(this.products.findIndex(p  => p.id === id), 1);
+            this.products.splice(this.products.findIndex(p  => p.id == id), 1);
         });
     }
 }

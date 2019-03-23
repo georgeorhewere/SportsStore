@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../../model/product.model';
+import { ProductRepository } from '../../model/product.repository';
 
 @Component({
   selector: 'app-product-grid',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductGridComponent implements OnInit {
 
-  constructor() { }
+  constructor(private repository: ProductRepository ) {
+
+  }
+  getProducts(): Product[] {
+    return this.repository.getProducts();
+  }
+
+  deleteProduct(id: number) {
+    this.repository.deleteProduct(id);
+  }
 
   ngOnInit() {
   }
